@@ -24,8 +24,10 @@ target_include_directories(libunifex INTERFACE ${libunifex_includes})
 function(def_example target sourceFile)
     add_executable(${target} ${sourceFile})
     target_link_libraries(${target} libunifex)
+    target_include_directories(${target} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
 endfunction()
 
 def_example(hello "hello.cpp")
+def_example(fork "basic/fork.cpp")
 def_example(async_start "various/async_start.cpp")
 
