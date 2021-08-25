@@ -21,10 +21,16 @@ inline auto run_on(Sched &&sched, F &&f) {
 template <typename Snd>
 inline void start_detached(Snd&& snd) {
     struct empty_recv {
-        void set_value() {}
+        void set_value(...) {}
         void set_done() noexcept {}
         void set_error(std::exception_ptr) noexcept {}
     };
     submit(std::move(snd), empty_recv{});
+}
+
+template <typename Sched, typename F>
+inline void spawn(Sched&& sched, F&& f) {
+    auto snd = run_on(forward<Sched>(sched), forward<F>(f));
+    start_detached(std::move(snd));
 }
 

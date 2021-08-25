@@ -4,12 +4,6 @@
 #include <string>
 #include <string_view>
 
-template <typename Sched, typename F>
-void spawn(Sched&& sched, F&& f) {
-    auto snd = run_on(forward<Sched>(sched), forward<F>(f));
-    start_detached(std::move(snd));
-}
-
 struct HttpResponse {
     int status_code_;
     std::string status_line_{};

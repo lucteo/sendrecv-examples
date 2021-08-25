@@ -2,12 +2,6 @@
 
 #include <string>
 
-template <typename Sched, typename F>
-void spawn(Sched&& sched, F&& f) {
-    auto snd = run_on(forward<Sched>(sched), forward<F>(f));
-    start_detached(std::move(snd));
-}
-
 struct person {
     std::string name_;
     static_thread_pool pool_{4};

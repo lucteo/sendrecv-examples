@@ -31,5 +31,6 @@ def_example(hello "hello.cpp")
 def_example(fork "basic/fork.cpp")
 def_example(continuation_1 "basic/continuation_1.cpp")
 def_example(continuation_2 "basic/continuation_2.cpp")
+def_example(join "basic/join.cpp")
 def_example(async_start "various/async_start.cpp")
 

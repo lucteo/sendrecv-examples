@@ -1,11 +1,5 @@
 #include "common.hpp"
 
-template <typename Sched, typename F>
-void spawn(Sched&& sched, F&& f) {
-    auto snd = run_on(forward<Sched>(sched), forward<F>(f));
-    start_detached(std::move(snd));
-}
-
 int main() {
     static_thread_pool my_pool{4};
 
